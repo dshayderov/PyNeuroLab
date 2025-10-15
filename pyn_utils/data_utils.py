@@ -1,3 +1,5 @@
+import numpy as np
+
 
 # === Этап 1, Тема 1: Структуры данных ===
 def unique_elements(data):
@@ -97,3 +99,4 @@ def summary(data, *, round_digits=2):
         'max': round(max(data), round_digits),
         'mean': round(sum(data) / len(data), round_digits)
     }
+

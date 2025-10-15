@@ -3,7 +3,7 @@ sys.path.append('./')
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")  # Без вывода окон
-from pyn_utils.plot_utils import generate_signal, plot_signal, compare_signals
+from pyn_utils import generate_signal, plot_signal, compare_signals
 
 # --- Тест 1: генерация сигнала ---
 t, s = generate_signal(freq=2, duration=1, sampling_rate=100)

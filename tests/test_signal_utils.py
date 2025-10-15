@@ -1,7 +1,7 @@
 import sys
 sys.path.append('./')
 import numpy as np
-from pyn_utils.signal_utils import SignalProcessor
+from pyn_utils import SignalProcessor
 
 
 # === Тест 1. Инициализация ===
