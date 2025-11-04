@@ -1,0 +1,8 @@
+{
+    "author": "PyNeuroLab Demo",
+    "modules_tested": [
+        "signal_plots",
+        "export_utils"
+    ],
+    "timestamp": "20251104_233119"
+}

@@ -10,11 +10,10 @@ from .file_utils import read_text, write_text, read_json, write_json, FileHandle
 from .data_utils import normalize, filter_data, combine_results, summary, unique_elements, merge_dicts, count_occurrences
 from .timing import Timer
 from .signal_utils import SignalProcessor
-from .plot_utils import generate_signal, plot_signal, compare_signals
 from .array_utils import ArrayProcessor
 from .pandas_utils import DataFrameProcessor
 from .data_preprocessor import DataPreprocessor
-
+from . import plot_utils
 
 
 # --- 2. Определение списка доступных при импорте элементов ---
@@ -24,5 +23,5 @@ __all__ = ['read_text', 'write_text', 'read_json', 'write_json', 'FileHandler',
            'normalize', 'filter_data', 'combine_results', 'summary', 
            'unique_elements', 'merge_dicts', 'count_occurrences',
            'Timer', 'SignalProcessor', 'ArrayProcessor', 'DataFrameProcessor',
-           'generate_signal', 'plot_signal', 'compare_signals',
-           'DataPreprocessor']
+           'DataPreprocessor',
+           "plot_utils"]

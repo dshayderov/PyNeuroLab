@@ -5,7 +5,7 @@ from pyn_utils import normalize, summary
 from pyn_utils.array_utils import ArrayProcessor
 import matplotlib.pyplot as plt
 from scipy.signal import spectrogram
-from pyn_utils import plot_utils as pu
+from .plot_utils import signal_plots as pu
 
 
 class SignalProcessor:
