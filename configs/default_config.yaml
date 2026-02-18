@@ -1,0 +1,49 @@
+# Конфигурация по умолчанию для PyNeuroLab
+
+# --- Общие настройки ---
+app_name: "PyNeuroLab App"
+version: "0.1.0"
+environment: "development" # production, development, testing
+
+# --- Настройки данных ---
+data_defaults:
+  sampling_rate: 128
+  eeg_data_path: "datasets/eeg_sample.csv" # Путь к тестовым ЭЭГ данным
+  target_column: "label" # Целевая колонка для классификации
+
+# --- Настройки обучения моделей ---
+training_defaults:
+  epochs: 100
+  batch_size: 32
+  shuffle_data: True
+  learning_rate: 0.001
+  optimizer: "Adam" # SGD, Adam, RMSprop
+  loss_function: "BCEWithLogitsLoss" # MSE, CrossEntropyLoss
+  early_stopping:
+    enabled: True
+    patience: 10
+    min_delta: 0.0001
+  checkpointing:
+    enabled: True
+    save_dir: "experiments/checkpoints"
+    save_freq_epochs: 5
+
+# --- Настройки визуализации ---
+plot_defaults:
+  figure_size: [10, 6]
+  cmap: "viridis"
+  export_dir: "exports"
+
+# --- Настройки Model Hub ---
+model_hub:
+  huggingface:
+    cache_dir: "cache/huggingface"
+  pytorch_hub:
+    cache_dir: "cache/pytorch_hub"
+  local_models_dir: "models/saved" # Директория для сохранения/загрузки локальных моделей
+
+# --- Настройки логирования ---
+logging:
+  level: "INFO" # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  log_file: "logs/app.log"
+  log_to_console: True

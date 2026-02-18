@@ -1,0 +1,4 @@
+# Игнорировать все файлы в директории experiments/
+*
+# Кроме самого .gitignore
+!.gitignore

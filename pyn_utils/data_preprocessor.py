@@ -1,4 +1,4 @@
-from pyn_utils import ArrayProcessor
+from pyn_utils.array_utils import ArrayProcessor
 
 
 class DataPreprocessor:

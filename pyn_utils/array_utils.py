@@ -1,5 +1,5 @@
 import numpy as np
-from pyn_utils import normalize
+from pyn_utils.data_utils import normalize
 
 # === Этап 2, Тема 7: NumPy: массивы, операции, broadcasting ===
 

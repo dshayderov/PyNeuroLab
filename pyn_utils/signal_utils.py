@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.signal import butter, filtfilt
 from scipy.stats import skew, kurtosis, entropy
-from pyn_utils import normalize, summary
+from pyn_utils.data_utils import normalize, summary
 from pyn_utils.array_utils import ArrayProcessor
 import matplotlib.pyplot as plt
 from scipy.signal import spectrogram
@@ -18,9 +18,9 @@ class SignalProcessor:
             raise TypeError("Сигнал должен быть списком или массивом NumPy")
         if len(signal) == 0:
             raise ValueError("Сигнал не может быть пустым")
-        self.signal = signal
-
+        self.signal = np.asarray(signal)
         self.sr = sampling_rate
+        self.t = np.linspace(0, self.duration(), len(self.signal), endpoint=False)
 
     def normalize(self, scale=1):
         """Нормализация сигнала"""

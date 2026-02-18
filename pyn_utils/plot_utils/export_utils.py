@@ -1,7 +1,7 @@
 from pathlib import Path
 import datetime
 import json
-from pyn_utils import FileHandler
+from pyn_utils.file_utils import FileHandler
 
 
 def create_export_dir(base_path="exports"):

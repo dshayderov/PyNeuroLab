@@ -1,24 +1,42 @@
-import sys, os, json, time
-sys.path.append('./')
-from pyn_utils import read_json, write_json, normalize, Timer
+import os
+import time
+import unittest # Добавляю unittest для более формальных тестов
 
-# --- Тест 1: запись и чтение JSON ---
-data = {"name": "Peter", "age": 32}
-write_json("data_test.json", data)
-assert os.path.exists("data_test.json")
+from pyn_utils.file_utils import read_json, write_json
+from pyn_utils.data_utils import normalize
+from pyn_utils.timing import Timer
 
-read_data = read_json("data_test.json")
-assert read_data == data
+# В unittest тесты лучше оформлять в классах
+class TestPynUtilsIntegration(unittest.TestCase):
 
-# --- Тест 2: проверка нормализации ---
-assert normalize([1, 2, 3], scale=6) == [0.0, 3.0, 6.0]
+    def setUp(self):
+        self.test_file = "data_test.json"
+        self.data = {"name": "Peter", "age": 32}
 
-# --- Тест 3: проверка работы Timer ---
-start = time.time()
-with Timer("Проверка задержки"):
-    time.sleep(0.1)
-elapsed = time.time() - start
-assert elapsed >= 0.1  # должно сработать не мгновенно
+    def tearDown(self):
+        if os.path.exists(self.test_file):
+            os.remove(self.test_file)
 
-os.remove("data_test.json")
-print("✅ Все интеграционные тесты пройдены успешно!")
+    def test_json_rw(self):
+        """Тест записи и чтения JSON."""
+        write_json(self.test_file, self.data)
+        self.assertTrue(os.path.exists(self.test_file))
+
+        read_data = read_json(self.test_file)
+        self.assertEqual(read_data, self.data)
+
+    def test_normalize(self):
+        """Тест нормализации."""
+        self.assertEqual(normalize([1, 2, 3], scale=6), [0.0, 3.0, 6.0])
+
+    def test_timer(self):
+        """Тест работы Timer."""
+        start = time.time()
+        with Timer("Проверка задержки"):
+            time.sleep(0.1)
+        elapsed = time.time() - start
+        self.assertGreaterEqual(elapsed, 0.1) # Используем assertGreaterEqual
+
+if __name__ == '__main__':
+    unittest.main()
+
